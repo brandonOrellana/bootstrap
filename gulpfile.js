@@ -32,9 +32,15 @@ function movejq() {
     .pipe(browserSync.stream())
 }
 
+function movete() {
+    return gulp.src(['node_modules/tether/dist/js/tether.min.js'])
+    .pipe(gulp.dest('src/js'))
+    .pipe(browserSync.stream())
+}
+
 exports.style = style;
 exports.watch = watch;
 exports.watch = movejs;
 exports.watch = movejq;
-
-exports.build = series(style,movejs, movejq, watch);
+exports.watch = movete;
+exports.build = series(style,movejs,movete, movejq, watch);
